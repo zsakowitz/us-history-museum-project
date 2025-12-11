@@ -12,7 +12,7 @@ export default async function (ctx: Ctx) {
 }
 
 async function defStart(ctx: Ctx) {
-    await ctx.type`You are one of those accused of being involved with the bombing. It is the middle of one of the trial you are involved in.\n\nThe judge asks, "how do you plead?"`
+    await ctx.type`You are one of those accused of being involved with the bombing. It is the middle of one of the trial you are involved in.\n\nThe judge asks, "how do you plead?"\n\nPress Q, W, or A on this device's PHYSICAL KEYBOARD to select an option; clicking the button will not work.`
 
     await ctx.switch({
         async Innocent(ctx) {
