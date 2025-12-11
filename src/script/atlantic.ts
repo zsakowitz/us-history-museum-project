@@ -2,17 +2,13 @@
 
 // Scripts are named by perspective:
 // - `def` => defendant
+// - no other perspectives exist yet
 
 import type { Ctx } from "../App"
 
 export default async function (ctx: Ctx) {
     await defStart(ctx)
-    return
-
-    await ctx.type`The Haymarket affair involved many different people. Who would you like to play as?`
-    await ctx.switch({
-        "One of the defendants during the trial": defStart,
-    })
+    await ctx.type`The game (and probably your life) is over.\n\nPlease note that most things in this text are not historically accurate, since the text adventure format inherently speculates about outcomes that did not happen -- otherwise it would be a very boring game.\n\nReload to let someone else play.`
 }
 
 async function defStart(ctx: Ctx) {
@@ -120,15 +116,11 @@ async function defGoToJail(ctx: Ctx) {
                     await ctx.type`You try to flee the United States, but quickly realize that there is a noose around your throat and that it's very hard to run in such circumstances.\n\nChoose an alternative route.`
                     await ctx.switch({
                         "Accept your death.": defDie,
-                        async "Make a quotable statement before your death."(ctx) {
-                            await ctx.type`You must be August Spies. Before his death, Spies stated, ""`
-                        },
+                        "Make a quotable statement before your death.": defQuotable,
                     })
                 },
                 "Accept your death.": defDie,
-                async "Make a quotable statement before your death."(ctx) {
-                    await ctx.type`You must be August Spies. Before his death, Spies stated, ""`
-                },
+                "Make a quotable statement before your death.": defQuotable,
             })
         },
         async "Yes, I would like to live."(ctx) {
@@ -142,6 +134,6 @@ async function defDie(ctx: Ctx) {
 }
 
 async function defQuotable(ctx: Ctx) {
-    await ctx.type`You must be August Spies. Before his death, Spies stated, ""`
-    true + 23
+    await ctx.type`You must be August Spies. Before his death, Spies stated, "The time will come when our silence is more powerful than the voices you strangle today." Everybody else was hanged shortly after, possibly to avoid giving them any time to talk.`
+    await ctx.type`You have been hanged. Rest in martyrdom, police killer.`
 }
