@@ -12,7 +12,7 @@ export default async function (ctx: Ctx) {
 }
 
 async function defStart(ctx: Ctx) {
-    await ctx.type`You are one of those accused of being involved with the bombing at Haymarket Square. It is the middle of one of the trial you are involved in.\n\nThe judge asks, "how do you plead?"\n\nPress Q, W, or A on this device's PHYSICAL KEYBOARD to select an option.`
+    await ctx.type`You have been accused of involvement with the bombing at Haymarket Square. We begin is the middle of your trial. Seven other accused anarchists are also here, alongside you.\n\nThe judge asks, "how do you plead?"\n\nPress Q, W, or A on this device's PHYSICAL KEYBOARD to select an option.`
 
     await ctx.switch({
         async Innocent(ctx) {
